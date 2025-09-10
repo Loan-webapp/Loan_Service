@@ -6,6 +6,7 @@ const dueSchema = new mongoose.Schema({
   dueDate: { type: String, required: true },
   dueAmount: { type: Number, required: true },
   status: { type: String, enum: ["Unpaid", "Paid"], default: "Unpaid" },
+  paidDate: { type: Date }, 
 });
 
 export default mongoose.model("Due", dueSchema);

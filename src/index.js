@@ -6,6 +6,7 @@ import connectDB from "./db.js";
 import customerRoutes from "./routes/customerRoutes.js";
 import loanRoutes from "./routes/loanRoutes.js";
 import dueRoutes from "./routes/dueRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/api/customers", customerRoutes);
 app.use("/api/loans", loanRoutes);
 app.use("/api/dues", dueRoutes);
+app.use("/api/payments", paymentRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Loan Service API running 🚀" });

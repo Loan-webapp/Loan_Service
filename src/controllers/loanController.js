@@ -54,3 +54,19 @@ export const getLoansByCustomer = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+export const getLoanById = async (req, res) => {
+  try {
+    const { loanId } = req.params;
+
+    const loan = await Loan.findById(loanId).lean();
+    if (!loan) return res.status(404).json({ error: "Loan not found" });
+
+    // Fetch dues for this loan
+    const dues = await Due.find({ loan: loanId }).sort({ dueDate: 1 }).lean();
+
+    res.json({ ...loan, dues });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

@@ -4,7 +4,7 @@ import { getCustomers, getCustomerById, addCustomer } from "../controllers/custo
 const router = express.Router();
 
 router.get("/", getCustomers);
-router.get("/:id", getCustomerById);   // ✅ new route
+router.get("/:id", getCustomerById);   //  new route
 router.post("/", addCustomer);
 
 export default router;
